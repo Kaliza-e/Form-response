@@ -42,18 +42,18 @@ export function InputLabel({
             ]}>
             {label}
           </Text>
-          {required && (
+          {required ? (
             <Text style={[styles.requiredAsterisk, { color: colors.error }]}>*</Text>
-          )}
-          {optional && (
+          ) : null}
+          {optional ? (
             <Text style={[styles.optionalTag, { color: colors.textSecondary }]}>
               (optional)
             </Text>
-          )}
+          ) : null}
         </View>
       ) : null}
 
-      {rightAction && <View style={styles.rightAction}>{rightAction}</View>}
+      {rightAction ? <View style={styles.rightAction}>{rightAction}</View> : null}
     </View>
   );
 }

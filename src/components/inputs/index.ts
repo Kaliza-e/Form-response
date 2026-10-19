@@ -18,8 +18,9 @@ export * from './selection/RadioGroupInput';
 export * from './selection/SwitchInput';
 export * from './selection/DatePickerInput';
 
-// Specialized information inputs (13-16)
+// Specialized information inputs (13-16+)
 export * from './specialized/SearchInput';
 export * from './specialized/OtpInput';
 export * from './specialized/ImagePickerInput';
+export * from './specialized/CameraInput';
 export * from './specialized/DocumentPickerInput';

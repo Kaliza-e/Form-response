@@ -188,11 +188,11 @@ export function ImagePickerInput({
                 style={StyleSheet.absoluteFill}
                 contentFit="cover"
               />
-              {loading && (
+              {loading ? (
                 <View style={styles.loadingOverlay}>
                   <ActivityIndicator size="small" color="#ffffff" />
                 </View>
-              )}
+              ) : null}
             </View>
 
             <View style={styles.actionsCluster}>
@@ -288,7 +288,7 @@ export function ImagePickerInput({
               </Text>
             </Pressable>
 
-            {Platform.OS !== 'web' && (
+            {Platform.OS !== 'web' ? (
               <Pressable
                 onPress={handleCameraPick}
                 style={({ pressed }) => [
@@ -298,9 +298,9 @@ export function ImagePickerInput({
                 <Ionicons name="camera-outline" size={20} color={colors.primary} />
                 <Text style={[styles.optionText, { color: colors.text }]}>Take a Photo</Text>
               </Pressable>
-            )}
+            ) : null}
 
-            {imageUri && (
+            {imageUri ? (
               <Pressable
                 onPress={handleRemove}
                 style={({ pressed }) => [
@@ -310,7 +310,7 @@ export function ImagePickerInput({
                 <Ionicons name="trash-outline" size={20} color={colors.error} />
                 <Text style={[styles.optionText, { color: colors.error }]}>Remove Photo</Text>
               </Pressable>
-            )}
+            ) : null}
 
             <Pressable
               onPress={() => setModalOpen(false)}
@@ -342,7 +342,11 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   loadingOverlay: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',

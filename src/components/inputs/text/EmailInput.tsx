@@ -63,13 +63,14 @@ export const EmailInput = forwardRef<any, EmailInputProps>(function EmailInput(
     setInternalError(null);
   };
 
-  const showSuggestions =
+  const showSuggestions = Boolean(
     showDomainSuggestions &&
-    value &&
-    value.length > 2 &&
-    !value.includes('.com') &&
-    !value.includes('.org') &&
-    !value.includes('.net');
+      value &&
+      value.length > 2 &&
+      !value.includes('.com') &&
+      !value.includes('.org') &&
+      !value.includes('.net')
+  );
 
   return (
     <View style={styles.container}>
@@ -100,7 +101,7 @@ export const EmailInput = forwardRef<any, EmailInputProps>(function EmailInput(
         {...rest}
       />
 
-      {showSuggestions && (
+      {showSuggestions ? (
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -122,7 +123,7 @@ export const EmailInput = forwardRef<any, EmailInputProps>(function EmailInput(
             </Pressable>
           ))}
         </ScrollView>
-      )}
+      ) : null}
     </View>
   );
 });

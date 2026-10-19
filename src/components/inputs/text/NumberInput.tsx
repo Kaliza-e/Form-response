@@ -128,7 +128,7 @@ export const NumberInput = forwardRef<any, NumberInputProps>(function NumberInpu
         {...rest}
       />
 
-      {quickAddButtons && quickAddButtons.length > 0 && !disabled && !readOnly && (
+      {quickAddButtons && quickAddButtons.length > 0 && !disabled && !readOnly ? (
         <View style={styles.quickAddRow}>
           {quickAddButtons.map((amount) => (
             <Pressable
@@ -143,7 +143,7 @@ export const NumberInput = forwardRef<any, NumberInputProps>(function NumberInpu
             </Pressable>
           ))}
         </View>
-      )}
+      ) : null}
     </View>
   );
 });

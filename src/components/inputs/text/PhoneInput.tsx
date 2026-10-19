@@ -155,14 +155,14 @@ export const PhoneInput = forwardRef<any, PhoneInputProps>(function PhoneInput(
                     <Text style={[styles.countryDial, { color: colors.textSecondary }]}>
                       {item.dialCode}
                     </Text>
-                    {isSelected && (
+                    {isSelected ? (
                       <Ionicons
                         name="checkmark"
                         size={18}
                         color={colors.primary}
                         style={styles.selectedCheck}
                       />
-                    )}
+                    ) : null}
                   </Pressable>
                 );
               }}

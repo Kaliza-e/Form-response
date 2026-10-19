@@ -353,7 +353,7 @@ export function DatePickerInput({
                 <Text style={[styles.presetText, { color: colors.primary }]}>Today</Text>
               </Pressable>
 
-              {mode !== 'birthDate' && (
+              {mode !== 'birthDate' ? (
                 <Pressable
                   onPress={() => handleQuickPreset('nextWeek')}
                   style={({ pressed }) => [
@@ -363,9 +363,9 @@ export function DatePickerInput({
                   ]}>
                   <Text style={[styles.presetText, { color: colors.primary }]}>+7 Days</Text>
                 </Pressable>
-              )}
+              ) : null}
 
-              {parsedDate && (
+              {parsedDate ? (
                 <Pressable
                   onPress={() => handleQuickPreset('clear')}
                   style={({ pressed }) => [
@@ -375,7 +375,7 @@ export function DatePickerInput({
                   ]}>
                   <Text style={[styles.presetText, { color: colors.error }]}>Clear</Text>
                 </Pressable>
-              )}
+              ) : null}
             </View>
           </Pressable>
         </Pressable>

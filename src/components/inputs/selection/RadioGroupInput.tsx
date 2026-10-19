@@ -89,7 +89,7 @@ export function RadioGroupInput<T = string>({
                   pressed && !isOptionDisabled && { opacity: 0.8 },
                 ]}>
                 <View style={styles.cardHeader}>
-                  {opt.icon && <View style={styles.cardIcon}>{opt.icon}</View>}
+                  {opt.icon ? <View style={styles.cardIcon}>{opt.icon}</View> : null}
                   <Text
                     style={[
                       styles.cardLabel,
@@ -112,18 +112,18 @@ export function RadioGroupInput<T = string>({
                         backgroundColor: 'transparent',
                       },
                     ]}>
-                    {isSelected && (
+                    {isSelected ? (
                       <View
                         style={[
                           styles.radioDot,
                           { backgroundColor: colors.primary },
                         ]}
                       />
-                    )}
+                    ) : null}
                   </View>
                 </View>
 
-                {opt.description && (
+                {opt.description ? (
                   <Text
                     style={[
                       styles.cardDesc,
@@ -131,7 +131,7 @@ export function RadioGroupInput<T = string>({
                     ]}>
                     {opt.description}
                   </Text>
-                )}
+                ) : null}
               </Pressable>
             );
           }
@@ -164,19 +164,19 @@ export function RadioGroupInput<T = string>({
                     backgroundColor: 'transparent',
                   },
                 ]}>
-                {isSelected && (
+                {isSelected ? (
                   <View
                     style={[
                       styles.radioDot,
                       { backgroundColor: isOptionDisabled ? colors.disabledText : colors.primary },
                     ]}
                   />
-                )}
+                ) : null}
               </View>
 
               <View style={styles.optionContent}>
                 <View style={styles.labelBadgeRow}>
-                  {opt.icon && <View style={styles.optionIcon}>{opt.icon}</View>}
+                  {opt.icon ? <View style={styles.optionIcon}>{opt.icon}</View> : null}
                   <Text
                     style={[
                       styles.optionLabel,
@@ -191,7 +191,7 @@ export function RadioGroupInput<T = string>({
                     ]}>
                     {opt.label}
                   </Text>
-                  {opt.badge && (
+                  {opt.badge ? (
                     <View
                       style={[
                         styles.badge,
@@ -201,10 +201,10 @@ export function RadioGroupInput<T = string>({
                         {opt.badge}
                       </Text>
                     </View>
-                  )}
+                  ) : null}
                 </View>
 
-                {opt.description && (
+                {opt.description ? (
                   <Text
                     style={[
                       styles.optionDesc,
@@ -212,7 +212,7 @@ export function RadioGroupInput<T = string>({
                     ]}>
                     {opt.description}
                   </Text>
-                )}
+                ) : null}
               </View>
             </Pressable>
           );

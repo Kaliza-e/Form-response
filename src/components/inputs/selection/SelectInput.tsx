@@ -115,7 +115,7 @@ export function SelectInput<T = string>({
         <View style={styles.valueRow}>
           {selectedOption ? (
             <View style={styles.selectedContent}>
-              {selectedOption.icon && <View style={styles.optionIcon}>{selectedOption.icon}</View>}
+              {selectedOption.icon ? <View style={styles.optionIcon}>{selectedOption.icon}</View> : null}
               <Text
                 style={[
                   styles.selectedText,
@@ -174,7 +174,7 @@ export function SelectInput<T = string>({
             </View>
 
             {/* Search filter if enabled */}
-            {searchable && options.length > 5 && (
+            {searchable && options.length > 5 ? (
               <View
                 style={[
                   styles.searchBox,
@@ -190,7 +190,7 @@ export function SelectInput<T = string>({
                   clearButtonMode="while-editing"
                 />
               </View>
-            )}
+            ) : null}
 
             {/* Options list */}
             <FlatList
@@ -217,7 +217,7 @@ export function SelectInput<T = string>({
                       item.disabled && styles.disabledOption,
                       pressed && !item.disabled && { opacity: 0.7 },
                     ]}>
-                    {item.icon && <View style={styles.optionIcon}>{item.icon}</View>}
+                    {item.icon ? <View style={styles.optionIcon}>{item.icon}</View> : null}
                     <View style={styles.optionDetails}>
                       <Text
                         style={[
@@ -233,21 +233,21 @@ export function SelectInput<T = string>({
                         ]}>
                         {item.label}
                       </Text>
-                      {item.description && (
+                      {item.description ? (
                         <Text style={[styles.optionDescription, { color: colors.textSecondary }]}>
                           {item.description}
                         </Text>
-                      )}
+                      ) : null}
                     </View>
 
-                    {isSelected && (
+                    {isSelected ? (
                       <Ionicons
                         name="checkmark-circle"
                         size={20}
                         color={colors.primary}
                         style={styles.checkIcon}
                       />
-                    )}
+                    ) : null}
                   </Pressable>
                 );
               }}

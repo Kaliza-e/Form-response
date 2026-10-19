@@ -71,11 +71,11 @@ export function InputBase({
         multiline && styles.boxMultiline,
         style,
       ]}>
-      {leftElement && <View style={styles.leftContainer}>{leftElement}</View>}
+      {leftElement ? <View style={styles.leftContainer}>{leftElement}</View> : null}
 
       <View style={styles.innerContent}>{children}</View>
 
-      {showClear && !disabled && !readOnly && onClear && (
+      {showClear && !disabled && !readOnly && onClear ? (
         <Pressable
           onPress={onClear}
           hitSlop={8}
@@ -88,9 +88,9 @@ export function InputBase({
             color={colors.placeholder}
           />
         </Pressable>
-      )}
+      ) : null}
 
-      {rightElement && <View style={styles.rightContainer}>{rightElement}</View>}
+      {rightElement ? <View style={styles.rightContainer}>{rightElement}</View> : null}
     </View>
   );
 

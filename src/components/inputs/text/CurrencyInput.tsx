@@ -101,9 +101,9 @@ export const CurrencyInput = forwardRef<any, CurrencyInputProps>(function Curren
       accessibilityRole="button"
       accessibilityLabel={`Currency ${selectedCurrency.code}`}>
       <Text style={[styles.symbolText, { color: colors.primary }]}>{selectedCurrency.symbol}</Text>
-      {allowCurrencySwitch && (
+      {allowCurrencySwitch ? (
         <Ionicons name="chevron-down" size={14} color={colors.textSecondary} style={styles.chevron} />
-      )}
+      ) : null}
       <View style={[styles.divider, { backgroundColor: colors.border }]} />
     </Pressable>
   );
@@ -124,7 +124,7 @@ export const CurrencyInput = forwardRef<any, CurrencyInputProps>(function Curren
         {...rest}
       />
 
-      {allowCurrencySwitch && (
+      {allowCurrencySwitch ? (
         <Modal
           visible={modalVisible}
           transparent
@@ -163,14 +163,14 @@ export const CurrencyInput = forwardRef<any, CurrencyInputProps>(function Curren
                       <Text style={[styles.itemName, { color: colors.textSecondary }]}>
                         {item.name}
                       </Text>
-                      {isSelected && (
+                      {isSelected ? (
                         <Ionicons
                           name="checkmark"
                           size={18}
                           color={colors.primary}
                           style={styles.selectedCheck}
                         />
-                      )}
+                      ) : null}
                     </Pressable>
                   );
                 }}
@@ -178,7 +178,7 @@ export const CurrencyInput = forwardRef<any, CurrencyInputProps>(function Curren
             </View>
           </Pressable>
         </Modal>
-      )}
+      ) : null}
     </>
   );
 });

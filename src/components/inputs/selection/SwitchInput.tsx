@@ -69,9 +69,9 @@ export function SwitchInput({
                 ]}>
                 {label}
               </Text>
-              {required && (
+              {required ? (
                 <Text style={[styles.requiredAsterisk, { color: colors.error }]}>*</Text>
-              )}
+              ) : null}
             </View>
           ) : null}
 
@@ -104,7 +104,7 @@ export function SwitchInput({
             }
             ios_backgroundColor={colors.border}
           />
-          {showStatusLabel && (
+          {showStatusLabel ? (
             <Text
               style={[
                 styles.statusLabel,
@@ -118,7 +118,7 @@ export function SwitchInput({
               ]}>
               {value ? activeLabel : inactiveLabel}
             </Text>
-          )}
+          ) : null}
         </View>
       </Pressable>
 

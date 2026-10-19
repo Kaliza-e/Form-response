@@ -89,7 +89,7 @@ export function CheckboxInput({
           ) : null}
         </View>
 
-        {(label || description) && (
+        {(label || description) ? (
           <View style={styles.textContainer}>
             {label ? (
               <View style={styles.labelRow}>
@@ -100,9 +100,9 @@ export function CheckboxInput({
                   ]}>
                   {label}
                 </Text>
-                {required && (
+                {required ? (
                   <Text style={[styles.requiredAsterisk, { color: colors.error }]}>*</Text>
-                )}
+                ) : null}
               </View>
             ) : null}
 
@@ -116,7 +116,7 @@ export function CheckboxInput({
               </Text>
             ) : null}
           </View>
-        )}
+        ) : null}
       </Pressable>
 
       {error ? (

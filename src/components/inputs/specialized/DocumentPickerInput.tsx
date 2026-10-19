@@ -139,14 +139,14 @@ export function DocumentPickerInput({
               numberOfLines={1}>
               {value.name}
             </Text>
-            {value.size && (
+            {typeof value.size === 'number' && (
               <Text style={[styles.fileSize, { color: colors.textSecondary }]}>
                 {formatFileSize(value.size)}
               </Text>
             )}
           </View>
 
-          {!disabled && !readOnly && (
+          {!disabled && !readOnly ? (
             <View style={styles.actionRow}>
               <Pressable
                 onPress={handlePickDocument}
@@ -163,7 +163,7 @@ export function DocumentPickerInput({
                 <Ionicons name="trash-outline" size={20} color={colors.error} />
               </Pressable>
             </View>
-          )}
+          ) : null}
         </View>
       ) : (
         <Pressable
