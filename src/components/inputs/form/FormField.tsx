@@ -1,60 +1,53 @@
-import { ReactElement } from 'react';
-import {
-  Control,
-  Controller,
-  FieldPath,
-  FieldValues,
-  RegisterOptions,
-} from 'react-hook-form';
+import React, { ReactNode } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-export interface FormFieldProps<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> {
-  name: TName;
-  control: Control<TFieldValues>;
-  rules?: Omit<
-    RegisterOptions<TFieldValues, TName>,
-    'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
-  >;
-  defaultValue?: any;
-  render: ({
-    value,
-    onChange,
-    onBlur,
-    error,
-  }: {
-    value: any;
-    onChange: (value: any) => void;
-    onBlur: () => void;
-    error?: string;
-  }) => ReactElement;
+interface FormFieldProps {
+  label?: string;
+  error?: string;
+  required?: boolean;
+  children: ReactNode;
 }
 
-export function FormField<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
->({
-  name,
-  control,
-  rules,
-  defaultValue,
-  render,
-}: FormFieldProps<TFieldValues, TName>) {
+/**
+ * FormField is a simple wrapper for form inputs.
+ * It displays a label at the top, the input element in the middle,
+ * and an error message at the bottom if validation fails.
+ */
+export function FormField({ label, error, required, children }: FormFieldProps) {
   return (
-    <Controller
-      name={name}
-      control={control}
-      rules={rules}
-      defaultValue={defaultValue}
-      render={({ field: { value, onChange, onBlur }, fieldState: { error } }) =>
-        render({
-          value,
-          onChange,
-          onBlur,
-          error: error?.message,
-        })
-      }
-    />
+    <View style={styles.container}>
+      {label ? (
+        <Text style={styles.label}>
+          {label}
+          {required ? <Text style={styles.required}> *</Text> : null}
+        </Text>
+      ) : null}
+
+      {children}
+
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 16,
+    width: '100%',
+  },
+  label: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#1f2937',
+    marginBottom: 6,
+  },
+  required: {
+    color: '#ef4444',
+    fontWeight: '700',
+  },
+  errorText: {
+    fontSize: 12,
+    color: '#ef4444',
+    marginTop: 4,
+  },
+});

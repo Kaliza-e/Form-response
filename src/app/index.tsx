@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { RegistrationFormDemo } from '@/components/inputs/demo/RegistrationFormDemo';
+import { RegistrationForm } from '@/components/inputs/form';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function HomeScreen() {
@@ -12,7 +12,7 @@ export default function HomeScreen() {
       style={[styles.safeArea, { backgroundColor: colors.background }]}
       edges={['top', 'left', 'right', 'bottom']}>
       <View style={styles.container}>
-        <RegistrationFormDemo />
+        <RegistrationForm />
       </View>
     </SafeAreaView>
   );
